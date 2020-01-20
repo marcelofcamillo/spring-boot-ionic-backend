@@ -9,10 +9,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.marcelocamillo.cursomc.domain.Categoria;
 import com.marcelocamillo.cursomc.domain.Cidade;
+import com.marcelocamillo.cursomc.domain.Cliente;
+import com.marcelocamillo.cursomc.domain.Endereco;
 import com.marcelocamillo.cursomc.domain.Estado;
 import com.marcelocamillo.cursomc.domain.Produto;
+import com.marcelocamillo.cursomc.domain.enums.TipoCliente;
 import com.marcelocamillo.cursomc.repositories.CategoriaRepository;
 import com.marcelocamillo.cursomc.repositories.CidadeRepository;
+import com.marcelocamillo.cursomc.repositories.ClienteRepository;
+import com.marcelocamillo.cursomc.repositories.EnderecoRepository;
 import com.marcelocamillo.cursomc.repositories.EstadoRepository;
 import com.marcelocamillo.cursomc.repositories.ProdutoRepository;
 
@@ -27,6 +32,10 @@ public class CursomcApplication implements CommandLineRunner{
 	private EstadoRepository estadoRepository;
 	@Autowired
 	private CidadeRepository cidadeRepository;
+	@Autowired
+	private ClienteRepository clienteRepository;
+	@Autowired
+	private EnderecoRepository enderecoRepository;
 	
 
 	public static void main(String[] args) {
@@ -70,6 +79,21 @@ public class CursomcApplication implements CommandLineRunner{
 		// primeiro salva os estados, depois as cidades
 		estadoRepository.saveAll(Arrays.asList(est1, est2));
 		cidadeRepository.saveAll(Arrays.asList(c1, c2, c3));
+		
+		/* cliente, telefone e endereço */
+		
+		Cliente cli1 = new Cliente(null, "Maria Silva", "maria@gmail.com", "36378912377", TipoCliente.PESSOAFISICA);
+		
+		cli1.getTelefones().addAll(Arrays.asList("27363323", "93838393"));
+		
+		Endereco e1 = new Endereco(null, "Rua Flores", "300", "Apto 303", "Jardim", "38220834", cli1, c1);
+		Endereco e2 = new Endereco(null, "Avenida Matos", "105", "Sala 800", "Centro", "38777012", cli1, c2);
+		
+		cli1.getEnderecos().addAll(Arrays.asList(e1, e2));
+		
+		clienteRepository.saveAll(Arrays.asList(cli1));
+		enderecoRepository.saveAll(Arrays.asList(e1, e2));
+		
 		
 	}
 	
