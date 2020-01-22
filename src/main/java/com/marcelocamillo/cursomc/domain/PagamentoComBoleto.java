@@ -9,7 +9,6 @@ import com.marcelocamillo.cursomc.domain.enums.EstadoPagamento;
 
 @Entity
 public class PagamentoComBoleto extends Pagamento {
-	
 	private static final long serialVersionUID = 1L;
 	
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mm")
@@ -44,5 +43,4 @@ public class PagamentoComBoleto extends Pagamento {
 	public void setDataPagamento(Date dataPagamento) {
 		this.dataPagamento = dataPagamento;
 	}	
-	
 }

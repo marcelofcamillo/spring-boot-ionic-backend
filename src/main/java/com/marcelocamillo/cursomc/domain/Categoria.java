@@ -15,7 +15,6 @@ import javax.persistence.ManyToMany;
 
 @Entity
 public class Categoria implements Serializable{
-
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -65,6 +64,7 @@ public class Categoria implements Serializable{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		
 		return result;
 	}
 
@@ -83,7 +83,7 @@ public class Categoria implements Serializable{
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		return true;
-	}
 		
+		return true;
+	}	
 }

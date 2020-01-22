@@ -33,7 +33,6 @@ import com.marcelocamillo.cursomc.repositories.ProdutoRepository;
 
 @SpringBootApplication
 public class CursomcApplication implements CommandLineRunner{
-	
 	@Autowired
 	private CategoriaRepository categoriaRepository;
 	@Autowired
@@ -59,7 +58,6 @@ public class CursomcApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		
 		/* produtos e categorias  */
 		
 		Categoria cat1 = new Categoria(null, "Informática");
@@ -141,7 +139,5 @@ public class CursomcApplication implements CommandLineRunner{
 		p3.getItens().addAll(Arrays.asList(ip2));
 		
 		itemPedidoRepository.saveAll(Arrays.asList(ip1, ip2, ip3));
-		
 	}
-	
 }

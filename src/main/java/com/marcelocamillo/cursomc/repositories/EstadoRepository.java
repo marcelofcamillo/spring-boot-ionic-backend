@@ -11,5 +11,4 @@ import com.marcelocamillo.cursomc.domain.Estado;
 @Repository
 public interface EstadoRepository extends JpaRepository<Estado, Integer>{
 	
-	
 }

@@ -11,16 +11,15 @@ import com.marcelocamillo.cursomc.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class ClienteService {
-	
 	@Autowired
 	private ClienteRepository repo; // acessa o objeto de acesso a dados
 	
 	// buscar uma categoria por código
 	public Cliente buscar(Integer id) {
 		Optional<Cliente> obj = repo.findById(id);
+		
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! ID: " + id + 
 				", Tipo: " + Cliente.class.getName()));
 	}
-	
 }

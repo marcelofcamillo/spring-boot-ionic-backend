@@ -19,7 +19,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public class Pedido implements Serializable {
-
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -116,6 +115,7 @@ public class Pedido implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		
 		return result;
 	}
 
@@ -133,7 +133,7 @@ public class Pedido implements Serializable {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
+		
 		return true;
 	}
-	
 }

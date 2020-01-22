@@ -9,7 +9,6 @@ import javax.persistence.ManyToOne;
 /* diz que é um subtipo */
 @Embeddable
 public class ItemPedidoPK implements Serializable {
-	 
 	private static final long serialVersionUID = 1L;
 
 	@ManyToOne
@@ -42,6 +41,7 @@ public class ItemPedidoPK implements Serializable {
 		int result = 1;
 		result = prime * result + ((pedido == null) ? 0 : pedido.hashCode());
 		result = prime * result + ((produto == null) ? 0 : produto.hashCode());
+		
 		return result;
 	}
 
@@ -64,7 +64,7 @@ public class ItemPedidoPK implements Serializable {
 				return false;
 		} else if (!produto.equals(other.produto))
 			return false;
+		
 		return true;
 	}
-
 }

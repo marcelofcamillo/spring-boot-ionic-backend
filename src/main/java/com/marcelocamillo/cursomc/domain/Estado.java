@@ -14,7 +14,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Estado implements Serializable{
-
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -65,6 +64,7 @@ public class Estado implements Serializable{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		
 		return result;
 	}
 
@@ -82,7 +82,7 @@ public class Estado implements Serializable{
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
+		
 		return true;
 	}
-
 }

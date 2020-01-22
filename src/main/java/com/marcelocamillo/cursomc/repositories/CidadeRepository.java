@@ -11,5 +11,4 @@ import com.marcelocamillo.cursomc.domain.Cidade;
 @Repository
 public interface CidadeRepository extends JpaRepository<Cidade, Integer>{
 	
-	
 }

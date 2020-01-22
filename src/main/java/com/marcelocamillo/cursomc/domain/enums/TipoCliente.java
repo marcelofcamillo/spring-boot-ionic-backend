@@ -1,7 +1,6 @@
 package com.marcelocamillo.cursomc.domain.enums;
 
 public enum TipoCliente {
-	
 	// controle total do código atribuido a cada enumeração
 	PESSOAFISICA(1, "Pessoa Física"),
 	PESSOAJURIDICA(2, "Pessoa Jurídica");
@@ -36,7 +35,5 @@ public enum TipoCliente {
 		}
 		
 		throw new IllegalArgumentException("ID inválido: " + cod);
-		
 	}
-	
 }

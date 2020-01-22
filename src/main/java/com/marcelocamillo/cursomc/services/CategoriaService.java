@@ -11,7 +11,6 @@ import com.marcelocamillo.cursomc.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class CategoriaService {
-	
 	@Autowired
 	private CategoriaRepository repo; // acessa o objeto de acesso a dados
 	
@@ -23,4 +22,8 @@ public class CategoriaService {
 				", Tipo: " + Categoria.class.getName()));
 	}
 	
+	public Categoria insert(Categoria obj) {
+		obj.setId(null);
+		return repo.save(obj);
+	}
 }
