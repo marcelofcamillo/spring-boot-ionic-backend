@@ -15,7 +15,7 @@ public class PedidoService {
 	private PedidoRepository repo; // acessa o objeto de acesso a dados
 	
 	// buscar uma categoria por código
-	public Pedido buscar(Integer id) {
+	public Pedido find(Integer id) {
 		Optional<Pedido> obj = repo.findById(id);
 		
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
