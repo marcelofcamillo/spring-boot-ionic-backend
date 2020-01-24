@@ -11,12 +11,12 @@ import com.marcelocamillo.cursomc.domain.Pedido;
 import com.marcelocamillo.cursomc.services.PedidoService;
 
 @RestController
-@RequestMapping(value="/pedidos")
+@RequestMapping(value = "/pedidos")
 public class PedidoResource {
 	@Autowired
 	private PedidoService service; // acessa o serviço
 	
-	@RequestMapping(value="/{id}", method=RequestMethod.GET)
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Pedido> find(@PathVariable Integer id) {
 		Pedido obj = service.find(id);
 		

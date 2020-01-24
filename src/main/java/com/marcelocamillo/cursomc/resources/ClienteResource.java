@@ -24,12 +24,12 @@ import com.marcelocamillo.cursomc.dto.ClienteNewDTO;
 import com.marcelocamillo.cursomc.services.ClienteService;
 
 @RestController
-@RequestMapping(value="/clientes")
+@RequestMapping(value = "/clientes")
 public class ClienteResource {
 	@Autowired
 	private ClienteService service; // acessa o serviço
 	
-	@RequestMapping(value="/{id}", method=RequestMethod.GET)
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Cliente> find(@PathVariable Integer id) {
 		Cliente obj = service.find(id);
 		
@@ -46,7 +46,7 @@ public class ClienteResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
-	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@Valid @RequestBody ClienteDTO objDto, @PathVariable Integer id) {
 		Cliente obj = service.fromDTO(objDto);
 		obj.setId(id);
@@ -55,14 +55,14 @@ public class ClienteResource {
 		return ResponseEntity.noContent().build();
 	}
 	
-	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		service.delete(id);
 		
 		return ResponseEntity.noContent().build();
 	}
 	
-	@RequestMapping(method=RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<ClienteDTO>> findAll() {
 		List<Cliente> list = service.findAll();
 		List<ClienteDTO> listDto = list.stream().map(obj -> new ClienteDTO(obj)).collect(Collectors.toList());
@@ -70,12 +70,12 @@ public class ClienteResource {
 		return ResponseEntity.ok().body(listDto);	
 	}
 		
-	@RequestMapping(value="/page", method=RequestMethod.GET)
+	@RequestMapping(value = "/page", method = RequestMethod.GET)
 	public ResponseEntity<Page<ClienteDTO>> findPage(
-			@RequestParam(value="page", defaultValue="0") Integer page, 
-			@RequestParam(value="linesPerPage", defaultValue="24")Integer linesPerPage, 
-			@RequestParam(value="orderBy", defaultValue="nome")String orderBy, 
-			@RequestParam(value="direction", defaultValue="ASC")String direction) {
+			@RequestParam(value = "page", defaultValue = "0") Integer page, 
+			@RequestParam(value = "linesPerPage", defaultValue = "24")Integer linesPerPage, 
+			@RequestParam(value = "orderBy", defaultValue = "nome")String orderBy, 
+			@RequestParam(value = "direction", defaultValue = "ASC")String direction) {
 		Page<Cliente> list = service.findPage(page, linesPerPage, orderBy, direction);
 		Page<ClienteDTO> listDto = list.map(obj -> new ClienteDTO(obj));
 		
