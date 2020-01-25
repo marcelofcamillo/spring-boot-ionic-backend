@@ -1,7 +1,9 @@
 package com.marcelocamillo.cursomc.repositories;
 
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.marcelocamillo.cursomc.domain.Cliente;
 
@@ -10,5 +12,8 @@ import com.marcelocamillo.cursomc.domain.Cliente;
 
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Integer>{
-	
+	/* quando cria a função findBy + o nome da variavel,
+	 * o spring data detecta automaticamente */
+	@Transactional(readOnly = true)
+	Cliente findByEmail(String email);
 }
