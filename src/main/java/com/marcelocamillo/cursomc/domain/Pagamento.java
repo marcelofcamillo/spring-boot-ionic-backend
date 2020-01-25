@@ -11,22 +11,24 @@ import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.marcelocamillo.cursomc.domain.enums.EstadoPagamento;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-// abstract: para não deixar instanciar a classe Pagamento
+@Inheritance(strategy=InheritanceType.JOINED)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "@type")
+//abstract: para não deixar instanciar a classe Pagamento
 public abstract class Pagamento implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	private Integer id;
 	private Integer estado;
-	
+
 	// id do pagamento é igual o id do pedido
 	@JsonIgnore
 	@OneToOne
-	@JoinColumn(name = "pedido_id")
+	@JoinColumn(name="pedido_id")
 	@MapsId
 	private Pedido pedido;
 	
@@ -36,7 +38,7 @@ public abstract class Pagamento implements Serializable {
 	public Pagamento(Integer id, EstadoPagamento estado, Pedido pedido) {
 		super();
 		this.id = id;
-		this.estado = (estado == null) ? null : estado.getCod();
+		this.estado = (estado==null) ? null : estado.getCod();
 		this.pedido = pedido;
 	}
 
@@ -69,7 +71,6 @@ public abstract class Pagamento implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		
 		return result;
 	}
 
@@ -87,7 +88,6 @@ public abstract class Pagamento implements Serializable {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		
 		return true;
-	}	
+	}
 }

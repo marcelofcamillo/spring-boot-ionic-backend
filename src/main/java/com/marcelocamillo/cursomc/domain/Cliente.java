@@ -22,30 +22,30 @@ import com.marcelocamillo.cursomc.domain.enums.TipoCliente;
 @Entity
 public class Cliente implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
 	
 	// email: chave candidata (evita repetição)
-	@Column(unique = true)
+	@Column(unique=true)
 	private String email;
 	private String cpfOuCnpj;
 	private Integer tipo;
 	
 	// 1 cliente tem vários endereços - 1:M
-	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="cliente", cascade=CascadeType.ALL)
 	private List<Endereco> enderecos = new ArrayList<>();
 	
 	@ElementCollection
-	@CollectionTable(name = "TELEFONE")
+	@CollectionTable(name="TELEFONE")
 	private Set<String> telefones = new HashSet<>();
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "cliente")
+	@OneToMany(mappedBy="cliente")
 	private List<Pedido> pedidos = new ArrayList<>();
-
+	
 	public Cliente() {
 	}
 
@@ -55,7 +55,7 @@ public class Cliente implements Serializable {
 		this.nome = nome;
 		this.email = email;
 		this.cpfOuCnpj = cpfOuCnpj;
-		this.tipo = (tipo == null) ? null : tipo.getCod();
+		this.tipo = (tipo==null) ? null : tipo.getCod();
 	}
 
 	public Integer getId() {
@@ -90,12 +90,10 @@ public class Cliente implements Serializable {
 		this.cpfOuCnpj = cpfOuCnpj;
 	}
 
-	// macete
 	public TipoCliente getTipo() {
 		return TipoCliente.toEnum(tipo);
 	}
 
-	// macete
 	public void setTipo(TipoCliente tipo) {
 		this.tipo = tipo.getCod();
 	}
@@ -115,7 +113,7 @@ public class Cliente implements Serializable {
 	public void setTelefones(Set<String> telefones) {
 		this.telefones = telefones;
 	}
-	
+
 	public List<Pedido> getPedidos() {
 		return pedidos;
 	}
@@ -129,7 +127,6 @@ public class Cliente implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		
 		return result;
 	}
 
@@ -147,7 +144,7 @@ public class Cliente implements Serializable {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		
 		return true;
-	}
+	}	
+
 }

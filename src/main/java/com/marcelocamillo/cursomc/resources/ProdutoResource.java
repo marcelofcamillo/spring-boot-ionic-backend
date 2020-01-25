@@ -17,17 +17,18 @@ import com.marcelocamillo.cursomc.resources.utils.URL;
 import com.marcelocamillo.cursomc.services.ProdutoService;
 
 @RestController
-@RequestMapping(value = "/produtos")
+@RequestMapping(value="/produtos")
 public class ProdutoResource {
+	
 	@Autowired
 	private ProdutoService service;
-
+	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<Produto> find(@PathVariable Integer id) {
 		Produto obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
-
+	
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<Page<ProdutoDTO>> findPage(
 			@RequestParam(value="nome", defaultValue="") String nome, 
@@ -42,4 +43,5 @@ public class ProdutoResource {
 		Page<ProdutoDTO> listDto = list.map(obj -> new ProdutoDTO(obj));  
 		return ResponseEntity.ok().body(listDto);
 	}
+
 }

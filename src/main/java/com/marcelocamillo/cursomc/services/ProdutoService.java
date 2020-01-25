@@ -17,24 +17,23 @@ import com.marcelocamillo.cursomc.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class ProdutoService {
+	
 	@Autowired
-	private ProdutoRepository repo; // acessa o objeto de acesso a dados
+	private ProdutoRepository repo;
+	
 	@Autowired
 	private CategoriaRepository categoriaRepository;
 	
-	// buscar uma categoria por código
+	// buscar um produto por código
 	public Produto find(Integer id) {
 		Optional<Produto> obj = repo.findById(id);
-		
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
-				"Objeto não encontrado! ID: " + id + 
-				", Tipo: " + Produto.class.getName()));
-	}	
-	
+				"Objeto não encontrado! Id: " + id + ", Tipo: " + Produto.class.getName()));
+	}
+
 	public Page<Produto> search(String nome, List<Integer> ids, Integer page, Integer linesPerPage, String orderBy, String direction) {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		List<Categoria> categorias = categoriaRepository.findAllById(ids);
-		
 		return repo.findDistinctByNomeContainingAndCategoriasIn(nome, categorias, pageRequest);	
 	}
 }

@@ -6,9 +6,9 @@ import org.springframework.stereotype.Repository;
 import com.marcelocamillo.cursomc.domain.Pagamento;
 
 /* realiza operações de acesso a dados (busca, salvar, alterar, deletar)
- * referentes ao objeto Categoria  */
+ * referentes ao objeto Pagamento  */
 
 @Repository
-public interface PagamentoRepository extends JpaRepository<Pagamento, Integer>{
-	
+public interface PagamentoRepository extends JpaRepository<Pagamento, Integer> {
+
 }

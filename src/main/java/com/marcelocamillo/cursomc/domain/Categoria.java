@@ -14,15 +14,15 @@ import javax.persistence.ManyToMany;
  * ser gravados em arquis, trafegar em rede, etc */
 
 @Entity
-public class Categoria implements Serializable{
+public class Categoria implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) // geração automática dos id's
+	@GeneratedValue(strategy=GenerationType.IDENTITY) // geração automática dos id's
 	private Integer id;
 	private String nome;
 	
-	@ManyToMany(mappedBy = "categorias")
+	@ManyToMany(mappedBy="categorias")
 	private List<Produto> produtos = new ArrayList<>();
 	
 	public Categoria() {
@@ -49,7 +49,7 @@ public class Categoria implements Serializable{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
 	public List<Produto> getProdutos() {
 		return produtos;
 	}
@@ -64,10 +64,9 @@ public class Categoria implements Serializable{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		
 		return result;
 	}
-
+	
 	// faz a comparação entre dois objetos considerando várias possibilidades
 	@Override
 	public boolean equals(Object obj) {
@@ -83,7 +82,7 @@ public class Categoria implements Serializable{
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		
 		return true;
-	}	
+	}
+
 }

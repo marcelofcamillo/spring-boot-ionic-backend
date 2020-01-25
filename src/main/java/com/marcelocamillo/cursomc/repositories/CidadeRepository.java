@@ -6,9 +6,9 @@ import org.springframework.stereotype.Repository;
 import com.marcelocamillo.cursomc.domain.Cidade;
 
 /* realiza operações de acesso a dados (busca, salvar, alterar, deletar)
- * referentes ao objeto Categoria  */
+ * referentes ao objeto Cidade  */
 
 @Repository
-public interface CidadeRepository extends JpaRepository<Cidade, Integer>{
-	
+public interface CidadeRepository extends JpaRepository<Cidade, Integer> {
+
 }

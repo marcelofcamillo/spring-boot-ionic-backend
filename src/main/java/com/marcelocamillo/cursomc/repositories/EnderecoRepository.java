@@ -6,9 +6,9 @@ import org.springframework.stereotype.Repository;
 import com.marcelocamillo.cursomc.domain.Endereco;
 
 /* realiza operações de acesso a dados (busca, salvar, alterar, deletar)
- * referentes ao objeto Categoria  */
+ * referentes ao objeto Endereco  */
 
 @Repository
-public interface EnderecoRepository extends JpaRepository<Endereco, Integer>{
-	
+public interface EnderecoRepository extends JpaRepository<Endereco, Integer> {
+
 }

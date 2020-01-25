@@ -18,15 +18,15 @@ import com.marcelocamillo.cursomc.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class CategoriaService {
+
 	@Autowired
-	private CategoriaRepository repo; // acessa o objeto de acesso a dados
-	
+	private CategoriaRepository repo;
+
 	// buscar uma categoria por código
 	public Categoria find(Integer id) {
 		Optional<Categoria> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
-				"Objeto não encontrado! ID: " + id + 
-				", Tipo: " + Categoria.class.getName()));
+				"Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
 	}
 	
 	public Categoria insert(Categoria obj) {
@@ -37,7 +37,6 @@ public class CategoriaService {
 	public Categoria update(Categoria obj) {
 		Categoria newObj = find(obj.getId());
 		updateData(newObj, obj);
-		
 		return repo.save(newObj);
 	}
 	
@@ -50,15 +49,13 @@ public class CategoriaService {
 			throw new DataIntegrityException("Não é possível excluir uma categoria que possui produtos");
 		}
 	}
-
+	
 	public List<Categoria> findAll() {
 		return repo.findAll();
 	}
 	
 	public Page<Categoria> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
-		// prepara as informações para a consulta
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
-		
 		return repo.findAll(pageRequest);
 	}
 	

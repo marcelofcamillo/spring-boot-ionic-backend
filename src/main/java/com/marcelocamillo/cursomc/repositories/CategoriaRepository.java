@@ -9,6 +9,6 @@ import com.marcelocamillo.cursomc.domain.Categoria;
  * referentes ao objeto Categoria  */
 
 @Repository
-public interface CategoriaRepository extends JpaRepository<Categoria, Integer>{
-	
+public interface CategoriaRepository extends JpaRepository<Categoria, Integer> {
+
 }

@@ -14,25 +14,25 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Endereco implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String logradouro;
 	private String numero;
 	private String complemento;
 	private String bairro;
-	private String cep;	
+	private String cep;
 	
 	// muitos endereços tem 1 cliente M:1
 	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name = "cliente_id")
+	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
 	
 	// muitos endereços tem 1 cidade M:1
 	@ManyToOne
-	@JoinColumn(name = "cidade_id")	
+	@JoinColumn(name="cidade_id")
 	private Cidade cidade;
 	
 	public Endereco() {
@@ -120,7 +120,6 @@ public class Endereco implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		
 		return result;
 	}
 
@@ -138,7 +137,6 @@ public class Endereco implements Serializable {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		
 		return true;
 	}
 }

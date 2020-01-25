@@ -6,9 +6,9 @@ import org.springframework.stereotype.Repository;
 import com.marcelocamillo.cursomc.domain.Pedido;
 
 /* realiza operações de acesso a dados (busca, salvar, alterar, deletar)
- * referentes ao objeto Categoria  */
+ * referentes ao objeto Pedido  */
 
 @Repository
-public interface PedidoRepository extends JpaRepository<Pedido, Integer>{
-	
+public interface PedidoRepository extends JpaRepository<Pedido, Integer> {
+
 }

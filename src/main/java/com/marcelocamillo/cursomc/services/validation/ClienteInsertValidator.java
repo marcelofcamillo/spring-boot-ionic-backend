@@ -16,6 +16,7 @@ import com.marcelocamillo.cursomc.resources.exception.FieldMessage;
 import com.marcelocamillo.cursomc.services.validation.utils.BR;
 
 public class ClienteInsertValidator implements ConstraintValidator<ClienteInsert, ClienteNewDTO> {
+
 	@Autowired
 	private ClienteRepository repo;
 	
@@ -25,24 +26,22 @@ public class ClienteInsertValidator implements ConstraintValidator<ClienteInsert
 
 	@Override
 	public boolean isValid(ClienteNewDTO objDto, ConstraintValidatorContext context) {
+		
 		List<FieldMessage> list = new ArrayList<>();
-
+		
 		/*if (objDto.getTipo() == null) {
-			list.add(new FieldMessage("tipo", "Tipo não pode ser nulo"));
+		list.add(new FieldMessage("tipo", "Tipo não pode ser nulo"));
 		}*/
 		
-		if (objDto.getTipo().equals(TipoCliente.PESSOAFISICA.getCod())
-				&& !BR.isValidCPF(objDto.getCpfOuCnpj())) {
+		if (objDto.getTipo().equals(TipoCliente.PESSOAFISICA.getCod()) && !BR.isValidCPF(objDto.getCpfOuCnpj())) {
 			list.add(new FieldMessage("cpfOuCnpj", "CPF inválido"));
 		}
-		
-		if (objDto.getTipo().equals(TipoCliente.PESSOAJURIDICA.getCod())
-				&& !BR.isValidCNPJ(objDto.getCpfOuCnpj())) {
+
+		if (objDto.getTipo().equals(TipoCliente.PESSOAJURIDICA.getCod()) && !BR.isValidCNPJ(objDto.getCpfOuCnpj())) {
 			list.add(new FieldMessage("cpfOuCnpj", "CNPJ inválido"));
 		}
-		
+
 		Cliente aux = repo.findByEmail(objDto.getEmail());
-		
 		if (aux != null) {
 			list.add(new FieldMessage("email", "Email já existente"));
 		}
@@ -52,7 +51,7 @@ public class ClienteInsertValidator implements ConstraintValidator<ClienteInsert
 			context.buildConstraintViolationWithTemplate(e.getMessage()).addPropertyNode(e.getFieldName())
 					.addConstraintViolation();
 		}
-		
 		return list.isEmpty();
 	}
 }
+
