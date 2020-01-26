@@ -5,9 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import com.marcelocamillo.cursomc.domain.ItemPedido;
 
-/* realiza operações de acesso a dados (busca, salvar, alterar, deletar)
- * referentes ao objeto ItemPedido  */
-
 @Repository
 public interface ItemPedidoRepository extends JpaRepository<ItemPedido, Integer> {
 

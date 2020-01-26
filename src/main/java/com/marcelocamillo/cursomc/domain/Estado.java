@@ -21,7 +21,6 @@ public class Estado implements Serializable {
 	private Integer id;
 	private String nome;
 	
-	// 1 estado tem várias cidades - 1:M
 	@JsonIgnore
 	@OneToMany(mappedBy="estado")
 	private List<Cidade> cidades = new ArrayList<>();
@@ -82,5 +81,8 @@ public class Estado implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}	
+	}
+	
+	
+	
 }

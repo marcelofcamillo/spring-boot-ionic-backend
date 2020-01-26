@@ -10,15 +10,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-/* Serializable: exigência para que os arquivos possam
- * ser gravados em arquis, trafegar em rede, etc */
-
 @Entity
 public class Categoria implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY) // geração automática dos id's
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
 	
@@ -58,7 +55,6 @@ public class Categoria implements Serializable {
 		this.produtos = produtos;
 	}
 
-	// gera um código numérico para cada objeto
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -66,8 +62,7 @@ public class Categoria implements Serializable {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-	
-	// faz a comparação entre dois objetos considerando várias possibilidades
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

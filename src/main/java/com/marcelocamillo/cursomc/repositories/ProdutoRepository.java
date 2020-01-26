@@ -13,9 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.marcelocamillo.cursomc.domain.Categoria;
 import com.marcelocamillo.cursomc.domain.Produto;
 
-/* realiza operações de acesso a dados (busca, salvar, alterar, deletar)
- * referentes ao objeto Produto  */
-
 @Repository
 public interface ProdutoRepository extends JpaRepository<Produto, Integer> {
 

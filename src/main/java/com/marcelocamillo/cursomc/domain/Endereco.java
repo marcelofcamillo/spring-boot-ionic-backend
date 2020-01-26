@@ -24,13 +24,11 @@ public class Endereco implements Serializable {
 	private String bairro;
 	private String cep;
 	
-	// muitos endereços tem 1 cliente M:1
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
 	
-	// muitos endereços tem 1 cidade M:1
 	@ManyToOne
 	@JoinColumn(name="cidade_id")
 	private Cidade cidade;
@@ -139,4 +137,7 @@ public class Endereco implements Serializable {
 			return false;
 		return true;
 	}
+	
+	
+	
 }

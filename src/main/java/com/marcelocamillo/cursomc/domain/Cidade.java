@@ -18,7 +18,6 @@ public class Cidade implements Serializable {
 	private Integer id;
 	private String nome;
 	
-	// muitas cidades tem 1 estado - M:1
 	@ManyToOne
 	@JoinColumn(name="estado_id")
 	private Estado estado;
@@ -80,5 +79,8 @@ public class Cidade implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}	
+	}
+	
+	
+	
 }

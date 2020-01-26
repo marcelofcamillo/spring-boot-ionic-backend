@@ -13,7 +13,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class ItemPedido implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	// chave composta com produto e pedido
 	@JsonIgnore
 	@EmbeddedId
 	private ItemPedidoPK id = new ItemPedidoPK();
@@ -111,12 +110,11 @@ public class ItemPedido implements Serializable {
 			return false;
 		return true;
 	}
-
+	
 	@Override
 	public String toString() {
 		NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
 		StringBuilder builder = new StringBuilder();
-		
 		builder.append(getProduto().getNome());
 		builder.append(", Qte: ");
 		builder.append(getQuantidade());
@@ -125,7 +123,6 @@ public class ItemPedido implements Serializable {
 		builder.append(", Subtotal: ");
 		builder.append(nf.format(getSubTotal()));
 		builder.append("\n");
-		
 		return builder.toString();
 	}
 }

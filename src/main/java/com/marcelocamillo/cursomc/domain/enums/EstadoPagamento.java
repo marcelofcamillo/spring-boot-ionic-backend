@@ -9,13 +9,11 @@ public enum EstadoPagamento {
 	private int cod;
 	private String descricao;
 	
-	// construtor de tipo enumerado é private
 	private EstadoPagamento(int cod, String descricao) {
 		this.cod = cod;
 		this.descricao = descricao;
 	}
 	
-	// tipo enumerado é só get pq não muda mais o nome dele
 	public int getCod() {
 		return cod;
 	}

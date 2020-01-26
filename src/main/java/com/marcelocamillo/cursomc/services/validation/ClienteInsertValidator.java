@@ -29,10 +29,6 @@ public class ClienteInsertValidator implements ConstraintValidator<ClienteInsert
 		
 		List<FieldMessage> list = new ArrayList<>();
 		
-		/*if (objDto.getTipo() == null) {
-		list.add(new FieldMessage("tipo", "Tipo não pode ser nulo"));
-		}*/
-		
 		if (objDto.getTipo().equals(TipoCliente.PESSOAFISICA.getCod()) && !BR.isValidCPF(objDto.getCpfOuCnpj())) {
 			list.add(new FieldMessage("cpfOuCnpj", "CPF inválido"));
 		}

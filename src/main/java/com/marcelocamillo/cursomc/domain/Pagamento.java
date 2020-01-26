@@ -17,7 +17,6 @@ import com.marcelocamillo.cursomc.domain.enums.EstadoPagamento;
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "@type")
-//abstract: para não deixar instanciar a classe Pagamento
 public abstract class Pagamento implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -25,7 +24,6 @@ public abstract class Pagamento implements Serializable {
 	private Integer id;
 	private Integer estado;
 
-	// id do pagamento é igual o id do pedido
 	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name="pedido_id")
@@ -90,4 +88,7 @@ public abstract class Pagamento implements Serializable {
 			return false;
 		return true;
 	}
+	
+	
+	
 }

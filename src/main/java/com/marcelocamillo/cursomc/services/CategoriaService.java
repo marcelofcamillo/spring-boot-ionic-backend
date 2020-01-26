@@ -22,30 +22,25 @@ public class CategoriaService {
 	@Autowired
 	private CategoriaRepository repo;
 
-	// buscar uma categoria por código
 	public Categoria find(Integer id) {
 		Optional<Categoria> obj = repo.findById(id);
-		
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
 	}
 	
 	public Categoria insert(Categoria obj) {
 		obj.setId(null);
-		
 		return repo.save(obj);
 	}
 	
 	public Categoria update(Categoria obj) {
 		Categoria newObj = find(obj.getId());
 		updateData(newObj, obj);
-		
 		return repo.save(newObj);
 	}
 	
 	public void delete(Integer id) {
 		find(id);
-		
 		try {
 			repo.deleteById(id);
 		}
@@ -60,7 +55,6 @@ public class CategoriaService {
 	
 	public Page<Categoria> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
-		
 		return repo.findAll(pageRequest);
 	}
 	

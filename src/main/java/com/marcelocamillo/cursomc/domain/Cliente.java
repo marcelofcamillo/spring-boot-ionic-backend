@@ -28,13 +28,11 @@ public class Cliente implements Serializable {
 	private Integer id;
 	private String nome;
 	
-	// email: chave candidata (evita repetição)
 	@Column(unique=true)
 	private String email;
 	private String cpfOuCnpj;
 	private Integer tipo;
 	
-	// 1 cliente tem vários endereços - 1:M
 	@OneToMany(mappedBy="cliente", cascade=CascadeType.ALL)
 	private List<Endereco> enderecos = new ArrayList<>();
 	

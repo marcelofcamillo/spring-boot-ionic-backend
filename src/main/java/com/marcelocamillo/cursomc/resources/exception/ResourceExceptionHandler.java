@@ -12,11 +12,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import com.marcelocamillo.cursomc.services.exceptions.DataIntegrityException;
 import com.marcelocamillo.cursomc.services.exceptions.ObjectNotFoundException;
 
-/* classe auxiliar que vai interceptar as exceções */
-
 @ControllerAdvice
 public class ResourceExceptionHandler {
-	// recebe a exceção e as informações de requisição
+	
 	@ExceptionHandler(ObjectNotFoundException.class)
 	public ResponseEntity<StandardError> objectNotFound(ObjectNotFoundException e, HttpServletRequest request) {
 		

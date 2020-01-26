@@ -33,11 +33,8 @@ public class Produto  implements Serializable {
 		joinColumns = @JoinColumn(name = "produto_id"),
 		inverseJoinColumns = @JoinColumn(name = "categoria_id")
 	)
-	
 	private List<Categoria> categorias = new ArrayList<>();
 	
-	// 1 pedido tem vários itens
-		// set: para garantir que não terá item repitido no pedido
 	@JsonIgnore
 	@OneToMany(mappedBy="id.produto")
 	private Set<ItemPedido> itens = new HashSet<>();
@@ -126,4 +123,6 @@ public class Produto  implements Serializable {
 			return false;
 		return true;
 	}
+	
+
 }
